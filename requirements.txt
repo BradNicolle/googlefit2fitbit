@@ -1,1 +1,3 @@
 fitbit
+google-api-python-client
+httplib2

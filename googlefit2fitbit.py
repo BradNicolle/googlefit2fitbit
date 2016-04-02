@@ -1,11 +1,14 @@
 import os
 import fitbit
+import logging
 
-CLIENT_ID = os.environ.get('CLIENT_ID')
-CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+#logging.basicConfig(level=logging.DEBUG)
 
-ACCESS_TOKEN = os.environ.get('ACCESS_TOKEN')
-REFRESH_TOKEN = os.environ.get('REFRESH_TOKEN')
+CLIENT_ID = os.environ.get('FITBIT_CLIENT_ID')
+CLIENT_SECRET = os.environ.get('FITBIT_CLIENT_SECRET')
+
+ACCESS_TOKEN = os.environ.get('FITBIT_ACCESS_TOKEN')
+REFRESH_TOKEN = os.environ.get('FITBIT_REFRESH_TOKEN')
 
 authd_client = fitbit.Fitbit(CLIENT_ID, CLIENT_SECRET, access_token=ACCESS_TOKEN, refresh_token=REFRESH_TOKEN)
 
