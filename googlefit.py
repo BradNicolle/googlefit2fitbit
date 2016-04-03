@@ -15,10 +15,9 @@ class GoogleFit():
 		self.http = httplib2.Http()
 		self.http = self.credentials.authorize(self.http)
 
-	def get_points(self, start_time, end_time):
-		datasetId = '{}-{}'.format(start_time, end_time)
+	def get_buckets(self, start_time, end_time):
 		service = build('fitness', 'v1', http=self.http)
-		request = service.users().dataSources().datasets().get(userId='me', dataSourceId='derived:com.google.step_count.delta:com.google.android.gms:estimated_steps', datasetId=datasetId)
+		request = service.users().dataset().aggregate(userId='me', body={'aggregateBy': [{'dataSourceId':'derived:com.google.step_count.delta:com.google.android.gms:estimated_steps'}], 'startTimeMillis': start_time, 'endTimeMillis': end_time, 'bucketByTime': {'durationMillis': 3600000}})
 		response = request.execute()
-		points = response['point']
-		return points
+		buckets = response['bucket']
+		return buckets
