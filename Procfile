@@ -1,1 +1,1 @@
-googlefit2fitbit: python googlefit2fitbit.py
+googlefit2fitbit: python herokuconfigvars.py
